@@ -1,0 +1,26 @@
+{
+  "pages": ["pages/index/index", "pages/profile/profile", "pages/edit/edit", "pages/pet-list/pet-list", "pages/pet-edit/pet-edit"],
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3CC51F",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTitleText": "喂呗",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f5f5",
+    "backgroundTextStyle": "dark"
+  },
+  "cloud": true
+}

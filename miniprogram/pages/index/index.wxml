@@ -1,0 +1,6 @@
+<view class="container">
+  <text class="title">🐾 喂呗 🐾</text>
+  <button class="main-btn" bindtap="goProfile">
+    <text>前往个人中心</text>
+  </button>
+</view>

@@ -1,0 +1,55 @@
+<view class="container">
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <text class="nav-title">我的宠物</text>
+    <view class="nav-right"></view>
+  </view>
+
+  <!-- 宠物列表 -->
+  <view class="pet-list">
+    <view wx:if="{{pets.length === 0 && !loading}}" class="empty-state">
+      <view class="empty-icon">🐾</view>
+      <text class="empty-text">还没有添加宠物</text>
+      <text class="empty-subtext">点击底部按钮添加你的第一个宠物</text>
+    </view>
+
+    <view wx:for="{{pets}}" wx:key="_id" class="pet-card" bindtap="goEdit" data-id="{{item._id}}">
+      <view class="pet-avatar">
+        <image wx:if="{{item.avatar}}" class="avatar-img" src="{{item.avatar}}" mode="aspectFill"></image>
+        <view wx:else class="avatar-placeholder">{{item.name[0]}}</view>
+        <view wx:if="{{item.isDefault}}" class="default-badge">默认</view>
+      </view>
+      
+      <view class="pet-info">
+        <view class="pet-header">
+          <text class="pet-name">{{item.name}}</text>
+          <text class="pet-type">{{item.type === 'cat' ? '猫咪' : item.type === 'dog' ? '狗狗' : '其他'}}</text>
+        </view>
+        <view class="pet-detail">
+          <text wx:if="{{item.breed}}" class="detail-item">{{item.breed}}</text>
+          <text wx:if="{{item.gender}}" class="detail-item">{{item.gender === 'male' ? '公' : '母'}}</text>
+          <text wx:if="{{item.weight}}" class="detail-item">{{item.weight}}kg</text>
+        </view>
+        <text wx:if="{{item.remark}}" class="pet-remark">{{item.remark}}</text>
+      </view>
+
+      <view class="pet-actions" catchtap="stopPropagation">
+        <view wx:if="{{!item.isDefault}}" class="action-btn default-btn" catchtap="setDefault" data-id="{{item._id}}">
+          设为默认
+        </view>
+        <view class="action-btn delete-btn" catchtap="deletePet" data-id="{{item._id}}">
+          删除
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="add-btn" bindtap="goAdd">
+    <text class="add-icon">+</text>
+    <text class="add-text">添加宠物</text>
+  </view>
+</view>

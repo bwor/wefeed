@@ -1,0 +1,37 @@
+<view class="page">
+  <!-- 昵称 -->
+  <view class="item">
+    <view class="item-left">
+      <view class="mark"></view>
+      <text class="title">昵称</text>
+    </view>
+    <input class="item-input" placeholder="输入昵称" value="{{nickname}}" bindinput="onInput" />
+  </view>
+
+  <!-- 头像 -->
+  <view class="item">
+    <view class="item-left">
+      <view class="mark"></view>
+      <text class="title">头像</text>
+    </view>
+    <button class="avatar-btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image wx:if="{{avatarPreview}}" class="avatar-img" src="{{avatarPreview}}"></image>
+      <image wx:elif="{{avatarUrl}}" class="avatar-img" src="{{avatarUrl}}"></image>
+      <image wx:else class="camera" src="/assets/icon-camera.png" />
+    </button>
+  </view>
+
+  <!-- 间距 -->
+  <view class="gap"></view>
+
+  <!-- 注销账号 -->
+  <view class="item logout" bindtap="logout">
+    <text class="title">注销账号</text>
+    <text class="arrow">›</text>
+  </view>
+
+  <!-- 底部完成 -->
+  <view class="footer">
+    <view class="submit" bindtap="save">完成</view>
+  </view>
+</view>

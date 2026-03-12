@@ -1,0 +1,32 @@
+<view class="container">
+  <!-- 个人资料卡片 -->
+  <view class="profile-card">
+    <!-- 可爱装饰元素 -->
+    <view class="decoration-element decoration-1"></view>
+    <view class="decoration-element decoration-2"></view>
+    
+    <!-- 头像容器 -->
+    <view class="avatar-container">
+      <view class="avatar">
+        <image wx:if="{{avatarUrl}}" class="img" src="{{avatarUrl}}"></image>
+        <open-data wx:else type="userAvatarUrl"></open-data>
+      </view>
+    </view>
+    
+    <!-- 昵称 -->
+    <text class="nickname">{{nickname || '未设置昵称'}}</text>
+    
+    <!-- 宠物信息提示 -->
+    <text class="pet-info">欢迎来到宠物喂养中心</text>
+  </view>
+  
+  <!-- 编辑按钮 -->
+  <button class="edit-btn" bindtap="goEdit">编辑个人资料</button>
+  
+  <!-- 宠物管理入口 -->
+  <button class="pet-btn" bindtap="goPetList">
+    <text class="pet-btn-icon">🐾</text>
+    <text class="pet-btn-text">我的宠物</text>
+    <text class="pet-btn-arrow">›</text>
+  </button>
+</view>
