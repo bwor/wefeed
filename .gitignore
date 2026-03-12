@@ -1,0 +1,42 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# 微信小程序编译产物
+miniprogram_dist/
+*.wxss.map
+*.wxml.map
+
+# 敏感配置文件
+project.private.config.json
+*.private.config.json
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.temp
+.cache/
+
+# 云函数相关
+**/cloudfunctions/**/node_modules/
+**/cloudfunctions/**/.env
+**/cloudfunctions/**/package-lock.json
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
