@@ -1,13 +1,4 @@
 <view class="container">
-  <!-- 顶部导航 -->
-  <view class="nav-bar">
-    <view class="back-btn" bindtap="goBack">
-      <text class="back-icon">‹</text>
-    </view>
-    <text class="nav-title">{{petId ? '编辑宠物' : '添加宠物'}}</text>
-    <view class="nav-right"></view>
-  </view>
-
   <!-- 头像上传 -->
   <view class="avatar-section">
     <view class="avatar-upload" bindtap="chooseAvatar">
@@ -25,8 +16,7 @@
     <!-- 名字 -->
     <view class="form-item">
       <view class="item-left">
-        <view class="required">*</view>
-        <text class="label">名字</text>
+        <text class="label"><text class="required">*</text>名字</text>
       </view>
       <input class="input" placeholder="请输入宠物名字" value="{{name}}" data-field="name" bindinput="onInput" />
     </view>
@@ -36,7 +26,7 @@
       <view class="item-left">
         <text class="label">类型</text>
       </view>
-      <picker bindchange="onTypeChange" value="{{type === 'cat' ? 0 : type === 'dog' ? 1 : 2}}" range="{{typeOptions}}" range-key="label">
+      <picker class="picker" bindchange="onTypeChange" value="{{type === 'cat' ? 0 : type === 'dog' ? 1 : 2}}" range="{{typeOptions}}" range-key="label">
         <view class="picker-value">
           <text>{{type === 'cat' ? '猫咪' : type === 'dog' ? '狗狗' : '其他'}}</text>
           <text class="arrow">›</text>
@@ -57,7 +47,7 @@
       <view class="item-left">
         <text class="label">性别</text>
       </view>
-      <picker bindchange="onGenderChange" value="{{gender === 'male' ? 0 : gender === 'female' ? 1 : 2}}" range="{{genderOptions}}" range-key="label">
+      <picker class="picker" bindchange="onGenderChange" value="{{gender === 'male' ? 0 : gender === 'female' ? 1 : 2}}" range="{{genderOptions}}" range-key="label">
         <view class="picker-value">
           <text>{{gender === 'male' ? '公' : gender === 'female' ? '母' : '未知'}}</text>
           <text class="arrow">›</text>
@@ -70,7 +60,7 @@
       <view class="item-left">
         <text class="label">生日</text>
       </view>
-      <picker mode="date" value="{{birthday}}" bindchange="onDateChange">
+      <picker class="picker" mode="date" value="{{birthday}}" bindchange="onDateChange">
         <view class="picker-value">
           <text wx:if="{{birthday}}">{{birthday}}</text>
           <text wx:else class="placeholder">选择生日</text>

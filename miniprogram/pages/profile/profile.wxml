@@ -1,13 +1,8 @@
 <view class="container">
-  <!-- 顶部背景装饰 -->
-  <view class="header-bg"></view>
-  
   <!-- 个人资料卡片 -->
   <view class="profile-card">
     <!-- 头像容器 -->
     <view class="avatar-wrapper">
-      <view class="avatar-ring"></view>
-      <view class="avatar-ring-2"></view>
       <view class="avatar">
         <image wx:if="{{avatarUrl}}" class="img" src="{{avatarUrl}}" mode="aspectFill"></image>
         <view wx:else class="avatar-default">
@@ -19,32 +14,11 @@
     <!-- 昵称 -->
     <view class="nickname-section">
       <text class="nickname">{{nickname || '点击编辑昵称'}}</text>
-      <view class="vip-badge" wx:if="{{nickname}}">LV.1</view>
-    </view>
-    
-    <!-- 统计信息 -->
-    <view class="stats-row">
-      <view class="stat-item">
-        <text class="stat-num">0</text>
-        <text class="stat-label">宠物</text>
-      </view>
-      <view class="stat-divider"></view>
-      <view class="stat-item">
-        <text class="stat-num">0</text>
-        <text class="stat-label">动态</text>
-      </view>
-      <view class="stat-divider"></view>
-      <view class="stat-item">
-        <text class="stat-num">0</text>
-        <text class="stat-label">关注</text>
-      </view>
     </view>
   </view>
   
   <!-- 功能菜单 -->
   <view class="menu-section">
-    <view class="menu-title">快捷功能</view>
-    
     <view class="menu-list">
       <view class="menu-item" bindtap="goPetList">
         <view class="menu-icon">🐕</view>
