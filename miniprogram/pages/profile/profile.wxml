@@ -1,32 +1,62 @@
 <view class="container">
+  <!-- 顶部背景装饰 -->
+  <view class="header-bg"></view>
+  
   <!-- 个人资料卡片 -->
   <view class="profile-card">
-    <!-- 可爱装饰元素 -->
-    <view class="decoration-element decoration-1"></view>
-    <view class="decoration-element decoration-2"></view>
-    
     <!-- 头像容器 -->
-    <view class="avatar-container">
+    <view class="avatar-wrapper">
+      <view class="avatar-ring"></view>
+      <view class="avatar-ring-2"></view>
       <view class="avatar">
-        <image wx:if="{{avatarUrl}}" class="img" src="{{avatarUrl}}"></image>
-        <open-data wx:else type="userAvatarUrl"></open-data>
+        <image wx:if="{{avatarUrl}}" class="img" src="{{avatarUrl}}" mode="aspectFill"></image>
+        <view wx:else class="avatar-default">
+          <text class="avatar-icon">🐾</text>
+        </view>
       </view>
     </view>
     
     <!-- 昵称 -->
-    <text class="nickname">{{nickname || '未设置昵称'}}</text>
+    <view class="nickname-section">
+      <text class="nickname">{{nickname || '点击编辑昵称'}}</text>
+      <view class="vip-badge" wx:if="{{nickname}}">LV.1</view>
+    </view>
     
-    <!-- 宠物信息提示 -->
-    <text class="pet-info">欢迎来到宠物喂养中心</text>
+    <!-- 统计信息 -->
+    <view class="stats-row">
+      <view class="stat-item">
+        <text class="stat-num">0</text>
+        <text class="stat-label">宠物</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">0</text>
+        <text class="stat-label">动态</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-num">0</text>
+        <text class="stat-label">关注</text>
+      </view>
+    </view>
   </view>
   
-  <!-- 编辑按钮 -->
-  <button class="edit-btn" bindtap="goEdit">编辑个人资料</button>
-  
-  <!-- 宠物管理入口 -->
-  <button class="pet-btn" bindtap="goPetList">
-    <text class="pet-btn-icon">🐾</text>
-    <text class="pet-btn-text">我的宠物</text>
-    <text class="pet-btn-arrow">›</text>
-  </button>
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="menu-title">快捷功能</view>
+    
+    <view class="menu-list">
+      <view class="menu-item" bindtap="goPetList">
+        <view class="menu-icon">🐕</view>
+        <text class="menu-text">我的宠物</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      
+      <view class="menu-item" bindtap="goEdit">
+        <view class="menu-icon">✏️</view>
+        <text class="menu-text">编辑资料</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
 </view>

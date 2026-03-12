@@ -2,10 +2,24 @@ Page({
   data: {
     pets: [],
     loading: false,
+    refreshing: false,
   },
 
   onShow() {
     this.loadPets();
+  },
+
+  onPullDownRefresh() {
+    this.loadPets().then(() => {
+      wx.stopPullDownRefresh();
+    });
+  },
+
+  onRefresh() {
+    this.setData({ refreshing: true });
+    this.loadPets().then(() => {
+      this.setData({ refreshing: false });
+    });
   },
 
   async loadPets() {
@@ -88,5 +102,9 @@ Page({
 
   goBack() {
     wx.navigateBack();
+  },
+
+  stopPropagation() {
+    // 阻止事件冒泡
   }
 });

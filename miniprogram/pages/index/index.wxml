@@ -1,6 +1,36 @@
 <view class="container">
-  <text class="title">🐾 喂呗 🐾</text>
-  <button class="main-btn" bindtap="goProfile">
-    <text>前往个人中心</text>
-  </button>
+  <!-- 顶部装饰 -->
+  <view class="header-decoration">
+    <view class="deco-dot deco-dot-1"></view>
+    <view class="deco-dot deco-dot-2"></view>
+    <view class="deco-dot deco-dot-3"></view>
+  </view>
+
+  <!-- Logo 区域 -->
+  <view class="logo-section">
+    <view class="logo-icon">🐾</view>
+    <text class="title">喂呗</text>
+    <text class="subtitle">记录宠物的美好时光</text>
+  </view>
+
+  <!-- 功能卡片区域 -->
+  <view class="feature-cards">
+    <view class="feature-card" bindtap="goPetList">
+      <view class="feature-icon">🐕</view>
+      <text class="feature-title">宠物档案</text>
+      <text class="feature-desc">管理爱宠信息</text>
+    </view>
+    
+    <view class="feature-card" bindtap="goProfile">
+      <view class="feature-icon">👤</view>
+      <text class="feature-title">个人中心</text>
+      <text class="feature-desc">查看个人信息</text>
+    </view>
+  </view>
+
+  <!-- 欢迎提示 -->
+  <view class="welcome-tip" wx:if="{{nickname}}">
+    <text class="welcome-icon">👋</text>
+    <text class="welcome-text">欢迎回来，{{nickname}}</text>
+  </view>
 </view>
