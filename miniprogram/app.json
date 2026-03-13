@@ -1,5 +1,11 @@
 {
-  "pages": ["pages/index/index", "pages/profile/profile", "pages/edit/edit", "pages/pet-list/pet-list", "pages/pet-edit/pet-edit"],
+  "pages": [
+    "pages/index/index",
+    "pages/user-center/index",
+    "pages/profile-edit/index",
+    "pages/pet-list/index",
+    "pages/pet-edit/index"
+  ],
   "tabBar": {
     "color": "#7A7E83",
     "selectedColor": "#3CC51F",
@@ -10,7 +16,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/profile/profile",
+        "pagePath": "pages/user-center/index",
         "text": "个人中心"
       }
     ]

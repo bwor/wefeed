@@ -10,10 +10,10 @@ Page({
   },
 
   goEdit() {
-    wx.navigateTo({ url: "/pages/edit/edit" });
+    wx.navigateTo({ url: "/pages/profile-edit/index" });
   },
 
   goPetList() {
-    wx.navigateTo({ url: "/pages/pet-list/pet-list" });
+    wx.navigateTo({ url: "/pages/pet-list/index" });
   },
 });
