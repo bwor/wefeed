@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText": "宠物日历",
   "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black"
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "calendar": "/components/calendar/index"
+  }
 }
