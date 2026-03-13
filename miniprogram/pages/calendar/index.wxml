@@ -1,0 +1,100 @@
+<view class="calendar-container">
+  <!-- 日历头部 -->
+  <view class="calendar-header">
+    <view class="calendar-nav">
+      <button class="nav-btn" bindtap="prevMonth">←</button>
+      <view class="month-year">{{ currentYear }}年{{ currentMonth }}月</view>
+      <button class="nav-btn" bindtap="nextMonth">→</button>
+    </view>
+  </view>
+  
+  <!-- 日历主体 -->
+  <view class="calendar-main">
+    <!-- 星期标题 -->
+    <view class="weekdays">
+      <view wx:for="{{ weekdays }}" wx:key="index" class="weekday">{{ item }}</view>
+    </view>
+    
+    <!-- 日历网格 -->
+    <view class="calendar-grid">
+      <!-- 上个月的日期 -->
+      <view wx:for="{{ prevMonthDays }}" wx:key="index" class="calendar-day other-month">
+        <view class="day-number">{{ item }}</view>
+      </view>
+      
+      <!-- 当前月的日期 -->
+      <view wx:for="{{ currentMonthDays }}" wx:key="index" class="calendar-day {{ isToday(index + 1) ? 'today' : '' }} {{ isSelected(index + 1) ? 'selected' : '' }}" bindtap="selectDate" data-day="{{ index + 1 }}">
+        <view class="day-number">{{ index + 1 }}</view>
+        <view wx:if="{{ hasEvent(index + 1) }}" class="event-dot"></view>
+      </view>
+      
+      <!-- 下个月的日期 -->
+      <view wx:for="{{ nextMonthDays }}" wx:key="index" class="calendar-day other-month">
+        <view class="day-number">{{ item }}</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 事件区域 -->
+  <view class="event-section">
+    <!-- 事件列表 -->
+    <view class="event-list">
+      <view class="event-list-header">
+        <text>{{ selectedDate }}的事项</text>
+        <button class="add-event-btn" bindtap="showAddEventForm">+ 添加事项</button>
+      </view>
+      
+      <view wx:if="{{ selectedDateEvents.length === 0 }}" class="no-events">
+        <view class="empty-icon">📅</view>
+        <text>暂无事项</text>
+        <text class="hint">点击上方按钮添加事项</text>
+      </view>
+      
+      <view wx:for="{{ selectedDateEvents }}" wx:key="{{ item._id }}" class="event-item">
+        <view class="event-left">
+          <view class="event-time">{{ item.time }}</view>
+          <view class="event-dot-small"></view>
+        </view>
+        <view class="event-center">
+          <view class="event-title">{{ item.title }}</view>
+          <view wx:if="{{ item.note }}" class="event-note">{{ item.note }}</view>
+        </view>
+        <view class="event-right">
+          <button class="delete-event-btn" bindtap="deleteEvent" data-id="{{ item._id }}">删除</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 添加事项表单 -->
+  <view hidden="{{ !showForm }}" class="add-event-form">
+    <view class="form-header">
+      <text>添加事项</text>
+      <button class="close-btn" bindtap="hideAddEventForm">×</button>
+    </view>
+    
+    <view class="form-item">
+      <text class="form-label">标题</text>
+      <input placeholder="请输入事项标题" bindinput="bindTitleInput" value="{{ newEvent.title }}" maxlength="20" />
+    </view>
+    
+    <view class="form-item">
+      <text class="form-label">时间</text>
+      <picker mode="time" bindchange="bindTimeChange" value="{{ newEvent.time }}">
+        <view class="picker">
+          {{ newEvent.time || '请选择时间' }}
+        </view>
+      </picker>
+    </view>
+    
+    <view class="form-item">
+      <text class="form-label">备注</text>
+      <textarea placeholder="请输入备注信息（可选）" bindinput="bindNoteInput" value="{{ newEvent.note }}" maxlength="100" />
+    </view>
+    
+    <view class="form-actions">
+      <button class="cancel-btn" bindtap="hideAddEventForm">取消</button>
+      <button class="submit-btn" bindtap="addEvent">保存事项</button>
+    </view>
+  </view>
+</view>

@@ -16,8 +16,8 @@ exports.main = async (event, context) => {
       updateData.avatarUrl = avatarUrl;
     }
 
-    // 使用 _openid 字段查询用户
-    const userQuery = await db.collection("users").where({ _openid: OPENID }).get();
+    // 使用 openid 字段查询用户
+    const userQuery = await db.collection("users").where({ openid: OPENID }).get();
 
     if (userQuery.data && userQuery.data.length > 0) {
       // 用户存在，执行更新
@@ -32,7 +32,7 @@ exports.main = async (event, context) => {
       const now = Date.now();
       await db.collection("users").add({
         data: {
-          _openid: OPENID,
+          openid: OPENID,
           ...updateData,
           createAt: now,
           updateAt: now,
@@ -41,7 +41,7 @@ exports.main = async (event, context) => {
     }
 
     // 获取更新后的用户数据
-    const updatedQuery = await db.collection("users").where({ _openid: OPENID }).get();
+    const updatedQuery = await db.collection("users").where({ openid: OPENID }).get();
     const updatedData = updatedQuery.data && updatedQuery.data.length > 0 
       ? updatedQuery.data[0] 
       : null;

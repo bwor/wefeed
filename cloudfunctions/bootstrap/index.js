@@ -7,23 +7,23 @@ exports.main = async (event, context) => {
   let nickname = "";
   try {
     console.log("OPENID", OPENID);
-    // 使用 _openid 字段查询
-    const r = await db.collection("users").where({ _openid: OPENID }).get();
+    // 使用 openid 字段查询
+    const r = await db.collection("users").where({ openid: OPENID }).get();
     console.log("r", r);
-    
+
     if (r.data && r.data.length > 0) {
       const userData = r.data[0];
       nickname = userData.nickname || "";
-      
+
       // Return the full user profile data
-      return { 
-        openid: OPENID, 
-        created, 
+      return {
+        openid: OPENID,
+        created,
         nickname,
-        avatarUrl: userData.avatarUrl || '',
+        avatarUrl: userData.avatarUrl || "",
         createAt: userData.createAt,
         updateAt: userData.updateAt,
-        ...userData
+        ...userData,
       };
     } else {
       throw new Error("User not found");
@@ -58,28 +58,28 @@ exports.main = async (event, context) => {
       adjs[Math.floor(Math.random() * adjs.length)] +
       animals[Math.floor(Math.random() * animals.length)] +
       n;
-    
+
     const now = Date.now();
-    
-    // 创建新用户，使用 _openid 字段
+
+    // 创建新用户，使用 openid 字段
     await db.collection("users").add({
-      data: { 
-        _openid: OPENID,
+      data: {
+        openid: OPENID,
         nickname,
         createAt: now,
-        updateAt: now
+        updateAt: now,
       },
     });
     created = true;
-    
+
     // Return the new user profile data
-    return { 
-      openid: OPENID, 
-      created, 
+    return {
+      openid: OPENID,
+      created,
       nickname,
-      avatarUrl: '',
+      avatarUrl: "",
       createAt: now,
-      updateAt: now
+      updateAt: now,
     };
   }
 };

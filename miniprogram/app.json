@@ -4,7 +4,8 @@
     "pages/user-center/index",
     "pages/profile-edit/index",
     "pages/pet-list/index",
-    "pages/pet-edit/index"
+    "pages/pet-edit/index",
+    "pages/calendar/index"
   ],
   "tabBar": {
     "color": "#7A7E83",
@@ -14,6 +15,10 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/calendar/index",
+        "text": "宠物日历"
       },
       {
         "pagePath": "pages/user-center/index",

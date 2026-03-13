@@ -1,21 +1,97 @@
 /* 容器 */
 .container {
   min-height: 100vh;
-  background: #fffdf8;
+  background: linear-gradient(135deg, #fffdf8 0%, #fff5e6 100%);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  position: relative;
+  padding-bottom: 60rpx;
+}
+
+/* 顶部装饰 */
+.header-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200rpx;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.decoration-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 154, 106, 0.1);
+}
+
+.decoration-circle-1 {
+  width: 120rpx;
+  height: 120rpx;
+  top: 40rpx;
+  left: 60rpx;
+  animation: float 6s ease-in-out infinite;
+}
+
+.decoration-circle-2 {
+  width: 80rpx;
+  height: 80rpx;
+  top: 80rpx;
+  right: 80rpx;
+  animation: float 4s ease-in-out infinite 1s;
+}
+
+.decoration-circle-3 {
+  width: 60rpx;
+  height: 60rpx;
+  top: 120rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: float 5s ease-in-out infinite 0.5s;
 }
 
 /* 个人资料卡片 */
 .profile-card {
   background: #fff;
-  padding: 48rpx 32rpx 32rpx;
+  padding: 60rpx 40rpx 40rpx;
+  margin: 40rpx 24rpx 0;
+  border-radius: 30rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1rpx solid #f0f0f0;
-  justify-content: flex-start;
+  box-shadow: 0 12rpx 40rpx rgba(255, 165, 0, 0.15);
+  border: 2rpx solid #ffe5c2;
+  position: relative;
+  max-width: 600rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 卡片装饰元素 */
+.card-decoration {
+  position: absolute;
+  font-size: 32rpx;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.card-decoration-1 {
+  top: 30rpx;
+  left: 30rpx;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.card-decoration-2 {
+  bottom: 30rpx;
+  right: 30rpx;
+  animation: bounce 2s ease-in-out infinite 1s;
+}
+
+/* 头像容器 */
+.avatar-wrapper {
+  margin-bottom: 32rpx;
+  position: relative;
 }
 
 .avatar {
@@ -23,17 +99,32 @@
   height: 180rpx;
   border-radius: 50%;
   overflow: hidden;
-  border: 4rpx solid #ffe5c2;
-  background: linear-gradient(135deg, #fff5e6 0%, #ffe5c2 100%);
+  background: linear-gradient(135deg, #ff9a6a 0%, #ff7e5f 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8rpx 25rpx rgba(255, 126, 95, 0.3);
+}
+
+.avatar-border {
+  position: absolute;
+  top: -8rpx;
+  left: -8rpx;
+  right: -8rpx;
+  bottom: -8rpx;
+  border: 4rpx dashed #ffe5c2;
+  border-radius: 50%;
+  z-index: 0;
+  animation: rotate 10s linear infinite;
 }
 
 .img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .avatar-default {
@@ -42,59 +133,179 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, #ff9a6a 0%, #ff7e5f 100%);
 }
 
 .avatar-icon {
   font-size: 60rpx;
+  color: #fff;
 }
 
+/* 昵称区域 */
 .nickname-section {
-  margin-top: 24rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
 }
 
 .nickname {
   font-size: 36rpx;
-  font-weight: 600;
+  font-weight: 700;
   color: #333;
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+.pet-owner-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffe680 0%, #ffd93d 100%);
+  color: #333;
+  font-size: 24rpx;
+  font-weight: 600;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(255, 217, 61, 0.4);
 }
 
 /* 功能菜单 */
 .menu-section {
   margin-top: 32rpx;
   width: 100%;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+
+.menu-card {
+  background: #fff;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 30rpx rgba(255, 165, 0, 0.1);
+  border: 1rpx solid #ffe5c2;
+  overflow: hidden;
+  max-width: 600rpx;
+  margin: 0 auto;
 }
 
 .menu-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 36rpx 32rpx;
+  padding: 40rpx 32rpx;
   border-bottom: 1rpx solid #f5f5f5;
-  background: #fff;
-  width: 100%;
-  box-sizing: border-box;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.menu-item:first-child {
-  border-top: 1rpx solid #f5f5f5;
+.menu-item:last-child {
+  border-bottom: none;
 }
 
 .menu-item:active {
-  background: #fff9f5;
+  background: linear-gradient(135deg, #fff9f5 0%, #fff5e6 100%);
+  transform: translateX(4rpx);
+}
+
+.menu-icon-wrapper {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+  background: #f5f5f5;
+  flex-shrink: 0;
 }
 
 .menu-icon {
-  font-size: 40rpx;
-  margin-right: 24rpx;
+  font-size: 32rpx;
+}
+
+.menu-icon-pet {
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-icon-edit {
+  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-icon-help {
+  background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-icon-about {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .menu-text {
   flex: 1;
   font-size: 32rpx;
   color: #333;
+  font-weight: 500;
+}
+
+.menu-arrow-container {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .menu-arrow {
   font-size: 32rpx;
   color: #ccc;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:active .menu-arrow {
+  transform: translateX(8rpx);
+}
+
+/* 底部信息 */
+.footer {
+  margin-top: 60rpx;
+  text-align: center;
+  padding: 0 24rpx;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #999;
+  opacity: 0.8;
+}
+
+/* 动画 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20rpx);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

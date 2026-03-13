@@ -147,7 +147,7 @@ async function updatePet(OPENID, petId, data) {
     if (!petRes.data) {
       return { success: false, msg: "宠物不存在" };
     }
-    if (petRes.data._openid !== OPENID) {
+    if (petRes.data.openid !== OPENID) {
       return { success: false, msg: "无权修改该宠物" };
     }
 
@@ -208,7 +208,7 @@ async function deletePet(OPENID, petId) {
     if (!petRes.data) {
       return { success: false, msg: "宠物不存在" };
     }
-    if (petRes.data._openid !== OPENID) {
+    if (petRes.data.openid !== OPENID) {
       return { success: false, msg: "无权删除该宠物" };
     }
 
